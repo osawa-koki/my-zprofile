@@ -16,6 +16,7 @@ alias reset="git reset --soft HEAD^"
 alias main="git checkout main"
 alias dev="git checkout develop"
 alias log="git log --oneline --graph --decorate -n 10"
+alias logall="git log --oneline --graph --decorate --all"
 alias st="git status"
 
 show() {
