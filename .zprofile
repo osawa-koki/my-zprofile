@@ -18,6 +18,7 @@ alias dev="git checkout develop"
 alias log="git log --oneline --graph --decorate -n 10"
 alias logall="git log --oneline --graph --decorate --all"
 alias st="git status"
+alias add="git add"
 
 show() {
   git show "$1"
