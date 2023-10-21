@@ -1,13 +1,29 @@
 
 alias cls=clear
 
+md() {
+  mkdir $1
+  cd $1
+}
+
 # ########## Git ########## #
 
 alias g="git"
 
 alias wip="git commit -m WIP --allow-empty"
-alias init="git init && git commit -m 'First commit' --allow-empty && git branch -M main && git checkout -b develop"
 
+init() {
+  git init &&
+  git commit -m "First commit" --allow-empty &&
+  git branch -M main
+}
+
+ch() {
+  git fetch
+  git checkout "issues/$1"
+}
+
+alias add="git add ."
 alias push="git push origin HEAD"
 alias pull="git pull origin HEAD"
 
@@ -16,10 +32,7 @@ alias reset="git reset --soft HEAD^"
 alias main="git checkout main"
 alias dev="git checkout develop"
 alias log="git log --oneline --graph --decorate -n 10"
-alias logall="git log --oneline --graph --decorate --all"
 alias st="git status"
-alias add="git add"
-alias diff="git diff --color-words"
 
 show() {
   git show "$1"
@@ -37,9 +50,18 @@ nb() {
   git checkout main &&
   git pull origin HEAD &&
   git checkout -b "$1" &&
-  git commit -m "WIP" --allow-empty
+  git commit -m "WIP" --allow-empty &&
+  git push origin "$1"
+}
+
+merge() {
+  git merge "$1" --no-edit
 }
 
 revert() {
   git revert "$1" --no-edit
+}
+
+cherry-pick() {
+  git cherry-pick "$1"
 }
